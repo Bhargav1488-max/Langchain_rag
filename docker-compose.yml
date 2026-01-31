@@ -1,0 +1,14 @@
+version: '3'
+services:
+  langchain:
+    build:
+      context: .
+      dockerfile: libs/langchain/dev.Dockerfile
+    volumes:
+      - .:/workspaces/langchain
+    # Keep the container running
+    command: tail -f /dev/null
+    tty: true
+    stdin_open: true
+    environment:
+      - UV_LINK_MODE=copy
